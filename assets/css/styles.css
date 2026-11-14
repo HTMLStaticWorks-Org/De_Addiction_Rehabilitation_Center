@@ -1061,9 +1061,11 @@ p {
   flex-direction: column;
   gap: 0.85rem;
   position: relative;
+  min-width: 0;
 }
 
 .timeline-step-btn {
+  width: 100%;
   text-align: start;
   padding: 1.2rem 1.35rem;
   border-radius: var(--radius-md);
@@ -1072,17 +1074,12 @@ p {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  transition: border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
 }
 
 .timeline-step-btn.active {
   border-color: var(--accent-forest);
   background-color: var(--accent-sage-soft);
-  transform: translateX(6px);
-}
-
-[dir="rtl"] .timeline-step-btn.active {
-  transform: translateX(-6px);
 }
 
 .timeline-num {
@@ -1128,11 +1125,10 @@ p {
 
 .why-visual-stack {
   position: relative;
-  padding-bottom: 3rem;
 }
 
 .why-img-primary {
-  width: 86%;
+  width: 100%;
   aspect-ratio: 4 / 5;
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -1141,9 +1137,9 @@ p {
 
 .why-img-secondary {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 56%;
+  bottom: 1rem;
+  left: 1rem;
+  width: 46%;
   aspect-ratio: 4 / 3;
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -1152,8 +1148,8 @@ p {
 }
 
 [dir="rtl"] .why-img-secondary {
-  right: auto;
-  left: 0;
+  left: auto;
+  right: 1rem;
 }
 
 .why-list {
@@ -1272,6 +1268,14 @@ p {
 
 .cta-banner p {
   opacity: 0.88;
+}
+
+.cta-banner-media {
+  width: min(360px, 100%);
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 /* ==========================================================================
@@ -1571,9 +1575,10 @@ p {
 
 .program-detail-card > img {
   width: 100%;
-  height: 240px;
-  min-height: 240px;
+  aspect-ratio: 16 / 9;
+  height: auto;
   object-fit: cover;
+  object-position: center top;
   flex-shrink: 0;
 }
 
@@ -1813,6 +1818,20 @@ p {
   max-width: 480px;
 }
 
+.auth-card a.text-forest {
+  display: inline-block;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+}
+
+.auth-card a.text-forest:hover,
+.auth-card a.text-forest:focus-visible {
+  color: var(--accent-forest-hover);
+  text-decoration-color: currentColor;
+}
+
 .auth-brand-center {
   display: flex;
   flex-direction: column;
@@ -1996,9 +2015,29 @@ p {
   .span-7, .span-5, .span-4, .span-6 {
     grid-column: span 6;
   }
+  .cta-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cta-banner > div {
+    max-width: 100% !important;
+    width: 100%;
+  }
+  .cta-banner-media {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+  .cta-banner .cta-group {
+    width: 100%;
+    justify-content: flex-start;
+  }
 }
 
 @media (min-width: 681px) and (max-width: 960px) {
+  .cta-banner .cta-group .btn {
+    flex: 1 1 0;
+    max-width: 270px;
+  }
   .pillars-3col,
   .stories-grid,
   .facilities-3col {
